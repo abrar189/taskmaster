@@ -6,10 +6,14 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList<Task> ourTasks =new ArrayList<Task>();
+
+        ourTasks.add(new Task("task1","lab", "in progress"));
+        ourTasks.add(new Task("task2","code challenge", "assigned"));
+        ourTasks.add(new Task("task3"," setrtch goals", "new"));
+
+        RecyclerView allTasks = findViewById(R.id.recyclerView);
+        allTasks.setLayoutManager(new LinearLayoutManager(this));
+        allTasks.setAdapter(new TaskAdapter(ourTasks));
+
 
 
         Button allTaskButton = findViewById(R.id.button2);
@@ -38,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(sitting);
         });
 
-//        findViewById(R.id.task1).setOnClickListener(V ->{
-//            String taskTitle = task1.getText().toString();
-//
-//            Intent
-//        });
 
         Button tAsk1 = findViewById(R.id.task1);
         tAsk1.setOnClickListener((view -> {
@@ -93,27 +103,27 @@ public class MainActivity extends AppCompatActivity {
         theUser.setText( instName  + usernameTasks);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(getApplicationContext(), "Override onPause()", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(getApplicationContext(), "Override onStop()", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Toast.makeText(getApplicationContext(), "Override onRestart()", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(getApplicationContext(), "Override onDestroy()", Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+////        Toast.makeText(getApplicationContext(), "Override onPause()", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+////        Toast.makeText(getApplicationContext(), "Override onStop()", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+////        Toast.makeText(getApplicationContext(), "Override onRestart()", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+////        Toast.makeText(getApplicationContext(), "Override onDestroy()", Toast.LENGTH_SHORT).show();
+//    }
 }

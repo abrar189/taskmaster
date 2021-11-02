@@ -12,14 +12,25 @@ public class DetailPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_page);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent=getIntent();
+        String title=intent.getExtras().getString("taskNameClickListener");
+        String body=intent.getExtras().getString("taskBodyClickListener");
+        String state=intent.getExtras().getString("taskStateClickListener");
+        TextView taskTitleView =findViewById(R.id.titleTask);
+        TextView taskBodyView =findViewById(R.id.taskBody);
+        TextView taskStateView =findViewById(R.id.taskState);
+        taskTitleView.setText("Task Title:  "+title);
+        taskBodyView.setText("Task Body:  "+body);
+        taskStateView.setText("Task State:  "+state);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = getIntent();
-        String taskName = intent.getExtras().getString("taskName");
-        TextView taskTitle = findViewById(R.id.titleTask);
-        taskTitle.setText(taskName);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Intent intent = getIntent();
+//        String taskName = intent.getExtras().getString("taskName");
+//        TextView taskTitle = findViewById(R.id.titleTask);
+//        taskTitle.setText(taskName);
+//    }
 }
