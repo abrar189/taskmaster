@@ -24,7 +24,7 @@
         <activity
             android:name=".AllTasks"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".AddTask" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

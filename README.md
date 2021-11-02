@@ -34,3 +34,16 @@ it displays “{username}’s tasks” above the three task buttons.
 
 ![image description](screenshots/setting.PNG)
 
+## lab 28 :
+
+1. Refactor homepage to use a RecyclerView for displaying Task data. This have hardcoded Task data for now.
+
+![image description](screenshots/lab28.PNG)
+
+2. you can tap on any one of the Tasks in the RecyclerView, and it will appropriately launch the detail page with the correct Task title displayed and body and state.
+
+![image description](screenshots/1lab28.PNG)
+![image description](screenshots/2lab28.PNG)
+
+
+
