@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,15 +23,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        AppDatabase.getInstance(getApplicationContext()).taskDao().delete();
+        List<Task> tasksLest=AppDatabase.getInstance(getApplicationContext()).taskDao().getAll();
+
         ArrayList<Task> ourTasks =new ArrayList<Task>();
 
         ourTasks.add(new Task("task1","lab", "in progress"));
         ourTasks.add(new Task("task2","code challenge", "assigned"));
         ourTasks.add(new Task("task3"," setrtch goals", "new"));
 
+        for (Task task:tasksLest
+             ) {
+            ourTasks.add(task);
+        }
+
         RecyclerView allTasks = findViewById(R.id.recyclerView);
         allTasks.setLayoutManager(new LinearLayoutManager(this));
-        allTasks.setAdapter(new TaskAdapter(ourTasks));
+        allTasks.setAdapter(new TaskAdapter(tasksLest));
 
 
 
