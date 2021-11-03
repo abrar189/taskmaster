@@ -22,13 +22,13 @@
         app:layout_constraintVertical_bias="0.095" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/addtitle"
         android:layout_width="258dp"
         android:layout_height="70dp"
         android:layout_marginTop="128dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,17 +36,17 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/addDesc"
         android:layout_width="264dp"
         android:layout_height="69dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="description"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/addtitle"
         app:layout_constraintVertical_bias="0.167" />
 
     <TextView
@@ -56,11 +56,11 @@
         android:layout_marginBottom="@android:dimen/app_icon_size"
         android:text="Task title"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/addtitle"
+        app:layout_constraintEnd_toEndOf="@+id/addtitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/addtitle"
+        app:layout_constraintTop_toTopOf="@+id/addtitle"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -70,52 +70,81 @@
         android:layout_marginBottom="@android:dimen/app_icon_size"
         android:text="Task Description"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+        app:layout_constraintBottom_toBottomOf="@+id/addDesc"
+        app:layout_constraintEnd_toEndOf="@+id/addDesc"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintStart_toStartOf="@+id/addDesc"
+        app:layout_constraintTop_toTopOf="@+id/addDesc"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Add Task"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="208dp"
-        android:text="Total tasks : 0"
+        android:layout_marginBottom="152dp"
+        android:text="Total tasks "
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/back1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="336dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Back"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642" />
+
+    <EditText
+        android:id="@+id/addstate"
+        android:layout_width="271dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:hint="state"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.251"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDesc"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/textstate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Status"
+        android:layout_marginBottom="@android:dimen/app_icon_size"
+
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/addstate"
+        app:layout_constraintEnd_toEndOf="@+id/addstate"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addstate"
+        app:layout_constraintTop_toTopOf="@+id/addstate"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

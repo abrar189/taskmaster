@@ -45,5 +45,18 @@ it displays “{username}’s tasks” above the three task buttons.
 ![image description](screenshots/1lab28.PNG)
 ![image description](screenshots/2lab28.PNG)
 
+## lab 29 :
 
+1. Task Model and Room Following the directions provided in the Android documentation, set up Room in your application, and modify your Task class to be an Entity.
 
+   Add Task Form Modify your Add Task form to save the data entered in as a Task in your local database.
+
+   Homepage Refactor your homepage’s RecyclerView to display all Task entities in your database.
+
+![image description](screenshots/lab29.PNG)
+![image description](screenshots/1lab29.PNG)
+![image description](screenshots/2lab29.PNG)
+
+2. Detail Page Ensure that the description and status of a tapped task are also displayed on the detail page, in addition to the title
+
+![image description](screenshots/3lab29.PNG)
