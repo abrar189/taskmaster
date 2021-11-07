@@ -60,3 +60,9 @@ it displays “{username}’s tasks” above the three task buttons.
 2. Detail Page Ensure that the description and status of a tapped task are also displayed on the detail page, in addition to the title
 
 ![image description](screenshots/3lab29.PNG)
+
+## Lab: 31 - Espresso and Polish:
+
+1. Espresso Testing : Add Espresso to your application, and use it to test basic functionality of the main components of your application
+
+2. Polish : Complete any remaining feature tasks from previous days’ labs.
