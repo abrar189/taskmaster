@@ -66,3 +66,16 @@ it displays “{username}’s tasks” above the three task buttons.
 1. Espresso Testing : Add Espresso to your application, and use it to test basic functionality of the main components of your application
 
 2. Polish : Complete any remaining feature tasks from previous days’ labs.
+
+## Lab 32 :
+
+1. Using the amplify add api command, create a Task resource that replicates our existing Task schema. Update all references to the Task data to instead use AWS Amplify to access your data in DynamoDB instead of in Room.
+
+### Add Task Form
+2. Modify your Add Task form to save the data entered in as a Task to DynamoDB.
+
+### Homepage
+3. Refactor your homepage’s RecyclerView to display all Task entities in DynamoDB.
+
+![image description](screenshots/amplify32.PNG)
+![image description](screenshots/lab32.PNG)
