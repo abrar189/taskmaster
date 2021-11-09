@@ -3,15 +3,28 @@ package com.example.taskmaster;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.preference.PreferenceManager;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,23 +36,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        AppDatabase.getInstance(getApplicationContext()).taskDao().delete();
-        List<Task> tasksLest=AppDatabase.getInstance(getApplicationContext()).taskDao().getAll();
+        try {
 
-        ArrayList<Task> ourTasks =new ArrayList<Task>();
+            Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.configure(getApplicationContext());
 
-        ourTasks.add(new Task("task1","lab", "in progress"));
-        ourTasks.add(new Task("task2","code challenge", "assigned"));
-        ourTasks.add(new Task("task3"," setrtch goals", "new"));
-
-        for (Task task:tasksLest
-             ) {
-            ourTasks.add(task);
+            Log.i("Tutorial", "Initialized Amplify");
+        } catch (AmplifyException error) {
+            Log.e("Tutorial", "Could not initialize Amplify", error);
         }
 
+
         RecyclerView allTasks = findViewById(R.id.recyclerView);
+
+        Handler handler =new Handler(Looper.getMainLooper(), new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message message) {
+                allTasks.getAdapter().notifyDataSetChanged();
+                return false;
+            }
+        });
+
+        List <Task> tasks= new ArrayList<Task>();
+
+        Amplify.API.query(
+                ModelQuery.list(com.amplifyframework.datastore.generated.model.Task.class),
+                response -> {
+                    for (Task taskTodo : response.getData()) {
+                        tasks.add(taskTodo);
+                    }
+                    handler.sendEmptyMessage(1);
+                },
+                error -> Log.e("MyAmplifyApp", error.toString(), error)
+        );
+
         allTasks.setLayoutManager(new LinearLayoutManager(this));
-        allTasks.setAdapter(new TaskAdapter(tasksLest));
+        allTasks.setAdapter(new TaskAdapter(tasks));
 
 
 

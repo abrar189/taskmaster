@@ -3,10 +3,15 @@ package com.example.taskmaster;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
 
 public class AddTask extends AppCompatActivity {
 
@@ -34,16 +39,19 @@ public class AddTask extends AppCompatActivity {
                 EditText state=findViewById(R.id.addstate);
                 String addState=state.getText().toString();
 
-                Task task =new Task(addTitle,addBody,addState);
-                Long addedTaskID = AppDatabase.getInstance(getApplicationContext()).taskDao().insertAll(task);
+                Task todo = Task.builder()
+                        .title(addTitle)
+                        .body(addBody)
+                        .state(addState)
+                        .build();
 
-                Toast.makeText(getApplicationContext(),"submitted!", Toast.LENGTH_SHORT).show();
-                System.out.println(
-                        "++++++++++++++++++++++++++++++++++++++++++++++++++" +
-                                " Student ID : " + addedTaskID
-                                +
-                                "++++++++++++++++++++++++++++++++++++++++++++++++++"
+                Amplify.API.mutate(
+                        ModelMutation.create(todo),
+                        response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
+                        error -> Log.e("MyAmplifyApp", "Create failed", error)
                 );
+
+
             }
         });
 
