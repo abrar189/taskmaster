@@ -91,11 +91,14 @@ In this lab I created a second entity for a team, which has a name and a list of
 
 ### Add Task Form
 Modify your Add Task form to include either a Spinner or Radio Buttons for which team that task belongs to.
+
 ![image description](screenshots/lab33a.PNG)
 
 ### Settings Page
 In addition to a username, allow the user to choose their team on the Settings page. Use that Team to display only that team’s tasks on the homepage.
+
 ![image description](screenshots/lab33b.PNG)
 
 ### DynamoDB aws 
+
 ![image description](screenshots/lab33d.PNG)
