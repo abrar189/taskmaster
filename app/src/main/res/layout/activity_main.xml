@@ -63,12 +63,12 @@
         app:layout_constraintVertical_bias="0.78" />
 
     <Button
-        android:id="@+id/task1"
+        android:id="@+id/signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@android:color/holo_blue_dark"
-        android:text="Task 1"
+        android:text="sign in"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toStartOf="@+id/task2"
@@ -79,12 +79,12 @@
         tools:ignore="UnknownId" />
 
     <Button
-        android:id="@+id/task2"
+        android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:background="@android:color/holo_blue_dark"
-        android:text="Task 2"
+        android:text="sign up"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,11 +93,11 @@
         tools:ignore="NotSibling" />
 
     <Button
-        android:id="@+id/task3"
+        android:id="@+id/signout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_dark"
-        android:text="Task 3"
+        android:text="sign out"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

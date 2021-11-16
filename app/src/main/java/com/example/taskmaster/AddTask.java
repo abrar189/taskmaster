@@ -74,15 +74,4 @@ public class AddTask extends AppCompatActivity {
             }
         }
 
-//        Button backButton=findViewById(R.id.back1);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent transferToAddTask=new Intent(AddTask.this,MainActivity.class);
-//                startActivity(transferToAddTask);
-//            }
-//        });
 
-//
-//    }
-//    }
