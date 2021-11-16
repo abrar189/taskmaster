@@ -107,3 +107,27 @@ In addition to a username, allow the user to choose their team on the Settings p
 ## Lab 34: Publishing to the Play Store
 
 This lab is about generate an APK for the application and publishing it to the Google Play Store.
+
+## Lab 36: Cognito
+
+### Main Page
+
+![image description](screenshots/lab36d.PNG)
+
+### Sign Up page
+
+![image description](screenshots/lab36c.PNG)
+
+### Verification Page
+
+![image description](screenshots/lab36b.PNG)
+![image description](screenshots/lab36f.PNG)
+
+
+### Sign in Page
+
+![image description](screenshots/lab36a.PNG)
+
+### AWS Cognito
+
+![image description](screenshots/lab36.PNG)

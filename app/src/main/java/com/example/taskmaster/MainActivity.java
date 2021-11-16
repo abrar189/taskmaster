@@ -23,6 +23,7 @@ import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Task;
@@ -93,31 +94,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button tAsk1 = findViewById(R.id.task1);
-        tAsk1.setOnClickListener((view -> {
-            String taskTitle = tAsk1.getText().toString();
-            Intent goToDetail = new Intent(MainActivity.this , DetailPage.class);
-            goToDetail.putExtra("taskName", taskTitle);
-            startActivity(goToDetail);
-        }));
+        Button signInBbutton = findViewById(R.id.signin);
+        signInBbutton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        });
 
+        Button signUpButton = findViewById(R.id.signup);
+        signUpButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, JoinActivity.class);
+            startActivity(intent);
+        });
 
-        Button tAsk2 = findViewById(R.id.task2);
-        tAsk2.setOnClickListener((view -> {
-            String taskTitle = tAsk2.getText().toString();
-            Intent goToDetail = new Intent(MainActivity.this , DetailPage.class);
-            goToDetail.putExtra("taskName", taskTitle);
-            startActivity(goToDetail);
-        }));
-
-
-        Button tAsk3 = findViewById(R.id.task3);
-        tAsk3.setOnClickListener((view -> {
-            String taskTitle = tAsk3.getText().toString();
-            Intent goToDetail = new Intent(MainActivity.this , DetailPage.class);
-            goToDetail.putExtra("taskName", taskTitle);
-            startActivity(goToDetail);
-        }));
+        Button signOutButton = findViewById(R.id.signout);
+        signOutButton.setOnClickListener(view -> {
+            Amplify.Auth.signOut(
+                    () -> Log.i("AuthQuickstart", "Signed out successfully"),
+                    error -> Log.e("AuthQuickstart", error.toString())
+            );
+        });
     }
 
 
@@ -148,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
             Log.i("Main", "Initialized Amplify");
         } catch (AmplifyException error) {

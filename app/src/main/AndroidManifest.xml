@@ -10,13 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Taskmaster">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmailConfirmActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsPage"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DetailPage"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddTask"
             android:exported="false"
