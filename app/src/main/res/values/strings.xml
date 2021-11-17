@@ -5,4 +5,6 @@
     <string name="title">title</string>
     <string name="body">body</string>
     <string name="state">state</string>
+    <string name="download_the_linked_file" />
+    <string name="todo" />
 </resources>
