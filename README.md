@@ -131,3 +131,24 @@ This lab is about generate an APK for the application and publishing it to the G
 ### AWS Cognito
 
 ![image description](screenshots/lab36.PNG)
+
+## **Lab 37: S3**
+
+### **Add Task Activity**
+
+![Home page](screenshots/lab37d.jpg)
+
+### **Download Files Page**
+
+![Download Files Page](screenshots/lab37c.jpg)
+![image](screenshots/lab37a.jpg)
+
+
+### **TaskDetailPage Activity**
+
+![Task Detail Page](screenshots/lab37b.jpg)
+
+
+### **AWS S3**
+
+![S3](screenshots/lab37.PNG)

@@ -28,6 +28,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 
 
 import java.util.ArrayList;
@@ -94,17 +95,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button signInBbutton = findViewById(R.id.signin);
-        signInBbutton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        });
-
-        Button signUpButton = findViewById(R.id.signup);
-        signUpButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, JoinActivity.class);
-            startActivity(intent);
-        });
+//        Button signInBbutton = findViewById(R.id.signin);
+//        signInBbutton.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        Button signUpButton = findViewById(R.id.signup);
+//        signUpButton.setOnClickListener(view -> {
+//            Intent intent = new Intent(this, JoinActivity.class);
+//            startActivity(intent);
+//        });
 
         Button signOutButton = findViewById(R.id.signout);
         signOutButton.setOnClickListener(view -> {
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                     () -> Log.i("AuthQuickstart", "Signed out successfully"),
                     error -> Log.e("AuthQuickstart", error.toString())
             );
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -144,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.configure(getApplicationContext());
             Log.i("Main", "Initialized Amplify");
         } catch (AmplifyException error) {
