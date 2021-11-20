@@ -152,3 +152,12 @@ This lab is about generate an APK for the application and publishing it to the G
 ### **AWS S3**
 
 ![S3](screenshots/lab37.PNG)
+
+
+## **Lab 38: Notifications  **
+
+- add the ability for push notifications to be delivered to your app from the cloud.
+
+![notifications](screenshots/lab38.PNG)
+![notifications](screenshots/lab38a.PNG)
+![notifications](screenshots/lab38b.PNG)
