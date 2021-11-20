@@ -33,6 +33,8 @@ import com.amazonaws.mobileconnectors.pinpoint.targeting.TargetingClient;
 import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfile;
 import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfileUser;
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.analytics.AnalyticsEvent;
+import com.amplifyframework.analytics.pinpoint.AWSPinpointAnalyticsPlugin;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
@@ -60,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String enteredName = sharedPreferences.getString("EnteredText","Write the name");
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         creatTeams();
 
         getPinpointManager(getApplicationContext());
+        recordEvents();
 
         RecyclerView allTasks = findViewById(R.id.recyclerView);
 
@@ -114,17 +116,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        Button signInBbutton = findViewById(R.id.signin);
-//        signInBbutton.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//        });
-//
-//        Button signUpButton = findViewById(R.id.signup);
-//        signUpButton.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, JoinActivity.class);
-//            startActivity(intent);
-//        });
+        Button signInBbutton = findViewById(R.id.signin);
+        signInBbutton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        });
+
+        Button signUpButton = findViewById(R.id.signup);
+        signUpButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, JoinActivity.class);
+            startActivity(intent);
+        });
 
         Button signOutButton = findViewById(R.id.signout);
         signOutButton.setOnClickListener(view -> {
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSPinpointAnalyticsPlugin(getApplication()));
             Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.configure(getApplicationContext());
             Log.i("Main", "Initialized Amplify");
@@ -340,5 +343,17 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    public void recordEvents() {
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("Launch Main Activity")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 }

@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
+import com.amplifyframework.core.Amplify;
+
 public class SettingsPage extends AppCompatActivity {
 
     @Override
@@ -15,6 +18,7 @@ public class SettingsPage extends AppCompatActivity {
         setContentView(R.layout.activity_settings_page);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        recordEvents();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -47,4 +51,15 @@ public class SettingsPage extends AppCompatActivity {
 
     }
 
+    public void recordEvents() {
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("Launch Setting Activity")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
+    }
 }

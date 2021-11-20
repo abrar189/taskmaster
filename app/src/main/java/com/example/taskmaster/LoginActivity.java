@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.auth.AuthException;
 import com.amplifyframework.auth.result.AuthSignInResult;
 import com.amplifyframework.core.Amplify;
@@ -18,6 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        recordEvents();
     }
 
     public void onPressLogin(View view) {
@@ -50,5 +53,17 @@ public class LoginActivity extends AppCompatActivity {
     public void onJoinPressed(View view) {
         Intent intent = new Intent(this, JoinActivity.class);
         startActivity(intent);
+    }
+
+    public void recordEvents() {
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("Launch Login activity")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 }

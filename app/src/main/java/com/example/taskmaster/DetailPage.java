@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.core.Amplify;
 import com.squareup.picasso.Picasso;
 
@@ -24,6 +25,7 @@ public class DetailPage extends AppCompatActivity {
         setContentView(R.layout.activity_detail_page);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        recordEvents();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String title = sharedPreferences.getString("title", "title");
         String body = sharedPreferences.getString("body", "body");
@@ -74,6 +76,16 @@ public class DetailPage extends AppCompatActivity {
             );
         }
     }
+    public void recordEvents() {
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
 
+        Amplify.Analytics.recordEvent(event);
+    }
 
 }
