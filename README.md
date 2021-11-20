@@ -161,3 +161,9 @@ This lab is about generate an APK for the application and publishing it to the G
 ![notifications](screenshots/lab38.PNG)
 ![notifications](screenshots/lab38a.PNG)
 ![notifications](screenshots/lab38b.PNG)
+
+## **Lab 39: Analytics  **
+
+Add Analytics to your amplify project. Create and send an Event whenever you launch intents that start new activities.
+
+![Analytics](screenshots/lab39.PNG)

@@ -19,9 +19,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -44,6 +46,8 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        recordEvents();
 
         ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -81,7 +85,6 @@ public class AddTask extends AppCompatActivity {
                 String addState = state.getText().toString();
 
 
-
                 RadioButton b1 = findViewById(R.id.team1);
                 RadioButton b2 = findViewById(R.id.team2);
                 RadioButton b3 = findViewById(R.id.team3);
@@ -103,17 +106,18 @@ public class AddTask extends AppCompatActivity {
             }
         });
     }
-                private void dataStore(String title, String body, String state,String id) {
-                    String fileName = uploadedFileNames == null ? "" : uploadedFileNames;
-                    Task task = Task.builder().teamId(id).title(title).body(body).state(state).build();
-                Amplify.API.mutate(
-                        ModelMutation.create(task),
-                        response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
-                        error -> Log.e("MyAmplifyApp", "Create failed", error)
-                );
+
+    private void dataStore(String title, String body, String state, String id) {
+        String fileName = uploadedFileNames == null ? "" : uploadedFileNames;
+        Task task = Task.builder().teamId(id).title(title).body(body).state(state).build();
+        Amplify.API.mutate(
+                ModelMutation.create(task),
+                response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
+                error -> Log.e("MyAmplifyApp", "Create failed", error)
+        );
 
 
-            }
+    }
 
     private void onChooseFile(ActivityResult activityResult) throws IOException {
 
@@ -155,6 +159,19 @@ public class AddTask extends AppCompatActivity {
 
         return extension;
     }
-        }
+    public void recordEvents() {
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("Launch Add Task Activity")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
+    }
+
+
+}
 
 
