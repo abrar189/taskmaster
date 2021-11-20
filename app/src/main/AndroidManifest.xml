@@ -18,6 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Taskmaster">
 
+
+
         <activity
             android:name=".EmailConfirmActivity"
             android:exported="true" />
@@ -43,6 +45,13 @@
             android:name=".AddTask"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
+        <service
+            android:name=".PushListenerService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <activity
             android:name=".MainActivity"
             android:label="YourAppName"

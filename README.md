@@ -136,19 +136,28 @@ This lab is about generate an APK for the application and publishing it to the G
 
 ### **Add Task Activity**
 
-![Home page](screenshots/lab37d.jpg)
+![Home page](screenshots/lab37d.PNG)
 
 ### **Download Files Page**
 
-![Download Files Page](screenshots/lab37c.jpg)
-![image](screenshots/lab37a.jpg)
+![Download Files Page](screenshots/lab37c.PNG)
+![image](screenshots/lab37a.PNG)
 
 
 ### **TaskDetailPage Activity**
 
-![Task Detail Page](screenshots/lab37b.jpg)
+![Task Detail Page](screenshots/lab37b.PNG)
 
 
 ### **AWS S3**
 
 ![S3](screenshots/lab37.PNG)
+
+
+## **Lab 38: Notifications  **
+
+- add the ability for push notifications to be delivered to your app from the cloud.
+
+![notifications](screenshots/lab38.PNG)
+![notifications](screenshots/lab38a.PNG)
+![notifications](screenshots/lab38b.PNG)
