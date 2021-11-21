@@ -26,6 +26,8 @@ public class DetailPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recordEvents();
+
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String title = sharedPreferences.getString("title", "title");
         String body = sharedPreferences.getString("body", "body");
