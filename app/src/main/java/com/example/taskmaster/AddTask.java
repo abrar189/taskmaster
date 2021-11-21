@@ -16,6 +16,7 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -39,6 +40,9 @@ public class AddTask extends AppCompatActivity {
     String img = "";
     private String uploadedFileNames;
     ActivityResultLauncher<Intent> someActivityResultLauncher;
+    ImageView image;
+    public static final int REQUEST_FOR_FILE = 999;
+
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -60,6 +64,22 @@ public class AddTask extends AppCompatActivity {
                         }
                     }
                 });
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        image = findViewById(R.id.imageView_showFromS3);
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (imageUri != null) {
+                    image.setImageURI(imageUri);
+                    image.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+
+
 
         findViewById(R.id.btnUploadFile).setOnClickListener(view -> {
             Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
