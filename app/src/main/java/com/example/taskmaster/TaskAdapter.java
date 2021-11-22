@@ -46,27 +46,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         viewHolder.textViewBody.setText(task.getBody());
         viewHolder.textViewState.setText(task.getState());
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("my Adapter", "Element "+ viewHolder.getAdapterPosition() + " clicked");
                 Toast.makeText(context,"Submitted!", Toast.LENGTH_SHORT).show();
-                String title =viewHolder.textViewTitle.getText().toString();
-                editor.putString("title", title);
-                String body =viewHolder.textViewBody.getText().toString();
-                editor.putString("body", body);
-                String state =viewHolder.textViewState.getText().toString();
-                editor.putString("state", state);
-                String name=task.getFileName();
-                editor.putString("Filename",name);
-                editor.apply();
+                Intent intent = new Intent(context, DetailPage.class);
 
-                Intent gotToStd = new Intent(context,DetailPage.class);
-                context.startActivity(gotToStd);
+                String title = viewHolder.textViewTitle.getText().toString();
+                intent.putExtra("title", title);
+                String body = viewHolder.textViewBody.getText().toString();
+                intent.putExtra("body", body);
+                String state = viewHolder.textViewState.getText().toString();
+                intent.putExtra("state", state);
+                String name = task.getFileName();
+                intent.putExtra("Filename", name);
+
+                context.startActivity(intent);
+
 
 
             }
