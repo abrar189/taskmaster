@@ -175,3 +175,9 @@ Add an intent filter to your application such that a user can hit the â€œshareâ€
 ![Intent](screenshots/lab41.PNG)
 ![Intent](screenshots/lab41a.PNG)
 ![Intent](screenshots/lab41c.PNG)
+
+## **Lab 43: Analytics  **
+
+Add Analytics to your amplify project. Create and send an Event whenever you launch intents that start new activities.
+
+![Analytics](screenshots/lab43.PNG)
